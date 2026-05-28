@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jingyi Guo's e-portfolio: about, co-op experience, projects, skills, resume, and contact information.">
+    <title>Jingyi Guo | E-Portfolio</title>
+    <style>
+
+:root {
+    --bg: #f4f7fb;
+    --paper: #ffffff;
+    --ink: #1f2937;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --brand: #245f9d;
+    --brand-2: #0f766e;
+    --accent: #d97706;
+    --soft-blue: #eaf4ff;
+    --soft-green: #eaf8f4;
+    --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    --radius: 24px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background:
+        radial-gradient(circle at top left, rgba(36, 95, 157, 0.14), transparent 32rem),
+        radial-gradient(circle at 80% 10%, rgba(15, 118, 110, 0.12), transparent 28rem),
+        var(--bg);
+    line-height: 1.65;
+}
+a { color: inherit; }
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: 12px;
+    background: var(--ink);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 10px;
+    z-index: 9999;
+}
+.skip-link:focus { left: 12px; }
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(18px);
+    background: rgba(244, 247, 251, 0.82);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+}
+.nav-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+.logo-mark {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    color: #fff;
+    font-size: 0.95rem;
+}
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    padding: 8px 11px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.92rem;
+}
+.nav-links a:hover, .nav-links a:focus {
+    color: var(--brand);
+    background: rgba(36, 95, 157, 0.09);
+    outline: none;
+}
+main {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 44px 20px 72px;
+}
+.hero {
+    display: grid;
+    grid-template-columns: 1.22fr 0.78fr;
+    gap: 30px;
+    align-items: stretch;
+    padding-top: 10px;
+}
+.hero-card, .profile-card, .panel, .timeline-card, .project-card, .resume-card {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+.hero-card {
+    padding: clamp(30px, 5vw, 58px);
+    position: relative;
+    overflow: hidden;
+}
+.hero-card::after {
+    content: "";
+    position: absolute;
+    right: -90px;
+    bottom: -90px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(36, 95, 157, 0.08);
+}
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    color: var(--brand);
+    background: var(--soft-blue);
+    font-weight: 800;
+    font-size: 0.86rem;
+    letter-spacing: 0.02em;
+}
+h1 {
+    font-size: clamp(2.45rem, 6vw, 5.2rem);
+    line-height: 0.96;
+    margin: 24px 0 16px;
+    letter-spacing: -0.06em;
+}
+.hero-subtitle {
+    font-size: clamp(1.05rem, 2vw, 1.42rem);
+    color: var(--muted);
+    max-width: 760px;
+    margin: 0 0 26px;
+}
+.cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 0;
+    border-radius: 999px;
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 850;
+    cursor: pointer;
+}
+.btn-primary { background: var(--brand); color: white; box-shadow: 0 12px 28px rgba(36, 95, 157, 0.24); }
+.btn-primary:hover { background: #1e5186; }
+.btn-secondary { background: #fff; color: var(--brand); border: 1px solid var(--line); }
+.btn-secondary:hover { background: var(--soft-blue); }
+.hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 34px;
+    position: relative;
+    z-index: 1;
+}
+.metric {
+    padding: 16px;
+    border-radius: 18px;
+    background: #f8fafc;
+    border: 1px solid var(--line);
+}
+.metric strong {
+    display: block;
+    font-size: 1.35rem;
+    color: var(--brand);
+    line-height: 1.1;
+}
+.metric span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.86rem;
+    margin-top: 5px;
+}
+.profile-card {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.profile-photo {
+    width: 100%;
+    min-height: 360px;
+    border-radius: 22px;
+    object-fit: cover;
+    object-position: top center;
+    background: #e2e8f0;
+    border: 1px solid var(--line);
+}
+.quick-info {
+    display: grid;
+    gap: 12px;
+}
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px dashed var(--line);
+    padding-bottom: 10px;
+}
+.info-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.info-row span:first-child { color: var(--muted); font-weight: 750; }
+.info-row span:last-child { text-align: right; font-weight: 750; }
+section { margin-top: 84px; scroll-margin-top: 92px; }
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+.section-kicker {
+    color: var(--brand-2);
+    font-weight: 850;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.78rem;
+    margin: 0 0 8px;
+}
+h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.035em;
+}
+.section-note {
+    color: var(--muted);
+    max-width: 470px;
+    margin: 0;
+}
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 20px;
+}
+.panel { padding: 28px; }
+.panel p:first-child { margin-top: 0; }
+.panel p:last-child { margin-bottom: 0; }
+.bullet-grid {
+    display: grid;
+    gap: 12px;
+}
+.bullet {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: #f8fafc;
+}
+.bullet-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: var(--soft-green);
+    color: var(--brand-2);
+    font-weight: 900;
+}
+.bullet strong { display: block; margin-bottom: 2px; }
+.bullet span { color: var(--muted); }
+.timeline {
+    position: relative;
+    display: grid;
+    gap: 18px;
+}
+.timeline-card {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 24px;
+    align-items: start;
+}
+.date-pill {
+    width: fit-content;
+    padding: 7px 11px;
+    border-radius: 999px;
+    background: var(--soft-blue);
+    color: var(--brand);
+    font-weight: 850;
+    font-size: 0.86rem;
+}
+.timeline-card h3, .project-card h3 { margin: 0 0 6px; font-size: 1.25rem; }
+.role { color: var(--brand-2); font-weight: 850; margin: 0 0 10px; }
+.timeline-card p, .project-card p { margin: 0; color: #334155; }
+.card-list {
+    margin: 12px 0 0;
+    padding-left: 1.15rem;
+    color: #334155;
+}
+.card-list li { margin: 5px 0; }
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+.project-card {
+    overflow: hidden;
+}
+.project-card .content { padding: 24px; }
+.project-media {
+    width: 100%;
+    height: 255px;
+    overflow: hidden;
+    background: #e2e8f0;
+    border-bottom: 1px solid var(--line);
+}
+.project-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+.project-card:hover .project-media img { transform: scale(1.035); }
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+.tag {
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-weight: 750;
+    font-size: 0.82rem;
+    border: 1px solid var(--line);
+}
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+.skill-box {
+    padding: 18px;
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+}
+.skill-box strong { display: block; margin-bottom: 8px; color: var(--brand); }
+.skill-box span { color: var(--muted); font-size: 0.95rem; }
+.honors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+.honor {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 18px;
+    font-weight: 760;
+}
+.honor small {
+    display: block;
+    margin-top: 6px;
+    color: var(--muted);
+    font-weight: 650;
+}
+.resume-card {
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 24px;
+    align-items: stretch;
+}
+.resume-summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 22px;
+}
+.resume-frame {
+    min-height: 520px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    background: #f8fafc;
+}
+.resume-frame object, .resume-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+.contact-item {
+    padding: 18px;
+    border-radius: 20px;
+    background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+}
+.contact-item small {
+    display: block;
+    color: var(--muted);
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+.contact-item a { color: var(--brand); text-decoration: none; font-weight: 850; }
+.contact-item a:hover { text-decoration: underline; }
+footer {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 24px 20px 52px;
+    color: var(--muted);
+    text-align: center;
+}
+@media (max-width: 900px) {
+    .nav-inner { align-items: flex-start; flex-direction: column; }
+    .hero, .about-grid, .resume-card { grid-template-columns: 1fr; }
+    .profile-card { max-width: 480px; }
+    .project-grid { grid-template-columns: 1fr; }
+    .skills-grid, .honors-grid, .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .timeline-card { grid-template-columns: 1fr; gap: 12px; }
+}
+@media (max-width: 620px) {
+    main { padding: 22px 14px 48px; }
+    .nav-inner { padding: 12px 14px; }
+    .nav-links { gap: 2px; }
+    .nav-links a { padding: 7px 8px; font-size: 0.85rem; }
+    .hero-metrics, .skills-grid, .honors-grid, .contact-grid { grid-template-columns: 1fr; }
+    .hero-card, .panel, .timeline-card, .resume-card { padding: 22px; }
+    section { margin-top: 62px; }
+    .profile-photo { min-height: 300px; }
+    .resume-frame { min-height: 420px; }
+}
+@media print {
+    .site-nav, .cta-row, .resume-frame { display: none; }
+    body { background: #fff; }
+    main { padding: 0; }
+    section { page-break-inside: avoid; }
+    .hero-card, .profile-card, .panel, .timeline-card, .project-card, .resume-card, .skill-box, .honor, .contact-item { box-shadow: none; }
+}
+
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="site-nav" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a class="logo" href="#top" aria-label="Back to top"><span class="logo-mark">JG</span><span>Jingyi Guo</span></a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#coop">Co-op</a>
+                <a href="#projects">Projects</a>
+                <a href="#activities">Activities</a>
+                <a href="#skills">Skills</a>
+                <a href="#resume">Resume</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main">
+        <div id="top" class="hero">
+            <section class="hero-card" aria-label="Introduction">
+                <span class="eyebrow">Electrical Engineering & Automation</span>
+                <h1>Jingyi Guo</h1>
+                <p class="hero-subtitle">A Chongqing University student building practical experience across industrial control, power-system simulation, and intelligent hardware projects.</p>
+                <p>I am interested in turning electrical engineering concepts into working systems: from HMI graphics for rail-transit control projects to MATLAB/Simulink modeling and microcontroller-based robotics. I enjoy learning new tools quickly, communicating with teammates, and solving engineering problems step by step.</p>
+                <div class="cta-row">
+                    <a class="btn btn-primary" href="#resume">View Resume</a>
+                    <a class="btn btn-secondary" href="mailto:2738911257@qq.com">Contact Me</a>
+                </div>
+                <div class="hero-metrics" aria-label="Academic highlights">
+                    <div class="metric"><strong>3.73/4.0</strong><span>GPA</span></div>
+                    <div class="metric"><strong>3/30</strong><span>Class Rank</span></div>
+                    <div class="metric"><strong>2027.06</strong><span>Expected Graduation</span></div>
+                </div>
+            </section>
+
+            <aside class="profile-card" aria-label="Profile information">
+                <img class="profile-photo" src="assets/profile.jpg" alt="Professional portrait of Jingyi Guo">
+                <div class="quick-info">
+                    <div class="info-row"><span>University</span><span>Chongqing University</span></div>
+                    <div class="info-row"><span>Major</span><span>Electrical Engineering and Automation</span></div>
+                    <div class="info-row"><span>Location</span><span>Hebei, China</span></div>
+                    <div class="info-row"><span>Email</span><span>2738911257@qq.com</span></div>
+                </div>
+            </aside>
+        </div>
+
+        <section id="about">
+            <div class="section-head">
+                <div><h2>Professional background and interests</h2>
+                </div>
+            </div>
+            <div class="about-grid">
+                <article class="panel">
+                    <p>Hello! I am an Electrical Engineering and Automation student at Chongqing University, expected to graduate in June 2027. My coursework has covered semiconductor device physics, electric circuit theory, digital design, signals and systems, photovoltaics, engineering electromagnetics, and electrical machinery.</p>
+                    <p>My experiences connect classroom knowledge with hands-on engineering. I have participated in HMI development for subway projects, built simulation models for distance protection research, and programmed microcontroller modules for an intelligent tracking and obstacle-avoidance car.</p>
+                </article>
+                <aside class="panel bullet-grid" aria-label="Professional strengths">
+                    <div class="bullet"><span class="bullet-icon">01</span><div><strong>Engineering focus</strong><span>Industrial control, power-system simulation, robotics, and embedded implementation.</span></div></div>
+                    <div class="bullet"><span class="bullet-icon">02</span><div><strong>Team contribution</strong><span>Responsible, easy-going, and comfortable coordinating tasks in student organizations and technical projects.</span></div></div>
+                    <div class="bullet"><span class="bullet-icon">03</span><div><strong>Fast learning</strong><span>Able to pick up new software and technical workflows quickly, including MATLAB/Simulink, NX, Proteus, and Keil C51.</span></div></div>
+                </aside>
+            </div>
+        </section>
+
+        <section id="coop">
+            <div class="section-head">
+                <div><h2>Co-op experience</h2>
+                </div>
+            </div>
+            <div class="timeline">
+                <article class="timeline-card">
+                    <div><span class="date-pill">2024.05–2024.08<br>2025.01–2025.04</span></div>
+                    <div>
+                        <h3>NARI Industrial Control Technology (Nanjing) Co., Ltd.</h3>
+                        <p class="role">HMI Graphics / Industrial Control Intern</p>
+                        <p>Responsible for drawing Human-Machine Interface graphics and supporting HMI development for urban rail-transit projects, including Beijing Subway Line 3 and Chongqing Subway Line 4.</p>
+                        <ul class="card-list">
+                            <li>Practiced industrial control drawing standards and interface organization.</li>
+                            <li>Improved attention to detail through real engineering project deliverables.</li>
+                            <li>Strengthened communication with project members during iterative drawing and checking.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-head">
+                <div><h2>Selected engineering projects</h2>
+                </div>
+            </div>
+            <div class="project-grid">
+                <article class="project-card">
+                    <div class="project-media"><img src="assets/simulink_model.jpg" alt="MATLAB Simulink model used for grid-forming power station line protection research"></div>
+                    <div class="content">
+                        <h3>Distance Protection of Grid-forming Power Station Outgoing Lines</h3>
+                        <p class="role">Research Intern | 2025.09–2025.12</p>
+                        <p>Analyzed fault voltage and current amplitude/phase characteristics, evaluated the adaptability of traditional distance protection, and built outgoing-line models on the MATLAB/Simulink electromagnetic transient simulation platform.</p>
+                        <div class="tag-row"><span class="tag">MATLAB</span><span class="tag">Simulink</span><span class="tag">Power Systems</span><span class="tag">Waveform Analysis</span></div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-media"><img src="assets/tracking_car.jpg" alt="Intelligent obstacle avoidance and tracking car hardware project"></div>
+                    <div class="content">
+                        <h3>Intelligent Obstacle Avoidance and Tracking Car Design</h3>
+                        <p class="role">Team Member | 2024.01–2024.04</p>
+                        <p>Learned 51 microcontroller fundamentals and Proteus / Keil C51 co-simulation. Programmed driver modules to support forward and backward movement, steering, and speed control.</p>
+                        <div class="tag-row"><span class="tag">51 MCU</span><span class="tag">Keil C51</span><span class="tag">Proteus</span><span class="tag">Embedded Control</span></div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="content">
+                        <h3>Chongqing University 15th SRTP Project</h3>
+                        <p class="role">Team Member | 2022.10–2023.07</p>
+                        <p>Researched the design of a C-type underwater intelligent pipeline inspection robot, created 3D robot models using NX, and studied related functional code through literature review.</p>
+                        <div class="tag-row"><span class="tag">NX Modeling</span><span class="tag">Robotics</span><span class="tag">Literature Review</span></div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="content">
+                        <h3>Engineering Learning Portfolio</h3>
+                        <p class="role">Ongoing</p>
+                        <p>My current learning path combines electrical engineering fundamentals with hands-on tools such as MATLAB/Simulink, C++/Python, Multisim, AutoCAD, and embedded programming workflows.</p>
+                        <div class="tag-row"><span class="tag">Engineering Practice</span><span class="tag">Self-directed Learning</span><span class="tag">Technical Communication</span></div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="activities">
+            <div class="section-head">
+                <div><h2>Leadership and activities</h2>
+                </div>
+            </div>
+            <div class="timeline">
+                <article class="timeline-card">
+                    <div><span class="date-pill">2022.10–Present</span></div>
+                    <div>
+                        <h3>Chongqing University – University of Cincinnati Joint Co-op Institute</h3>
+                        <p class="role">Organizing Committee Member</p>
+                        <p>Participated in planning Youth League Day activities and Party lecture study sessions; helped communicate instructions from the college Youth League Committee.</p>
+                    </div>
+                </article>
+                <article class="timeline-card">
+                    <div><span class="date-pill">2023.09–2024.09</span></div>
+                    <div>
+                        <h3>Institute of Electrical Engineers</h3>
+                        <p class="role">Vice President</p>
+                        <p>Organized academic and hands-on activities for engineering students, including electrical/electronic lectures and PCB assembly workshops.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-head">
+                <div><h2>Technical toolkit</h2>
+                </div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-box"><strong>Simulation</strong><span>MATLAB, Simulink, Multisim</span></div>
+                <div class="skill-box"><strong>Programming</strong><span>C++, Python, Keil C51</span></div>
+                <div class="skill-box"><strong>Design Tools</strong><span>NX, AutoCAD, Proteus</span></div>
+                <div class="skill-box"><strong>Industrial Control</strong><span>HMI graphics, SECS programming</span></div>
+                <div class="skill-box"><strong>Electrical Foundation</strong><span>Circuits, signals, electromagnetics, electrical machinery</span></div>
+                <div class="skill-box"><strong>Embedded Practice</strong><span>51 MCU, driver modules, tracking car control</span></div>
+                <div class="skill-box"><strong>Communication</strong><span>Teamwork, organization, activity planning</span></div>
+                <div class="skill-box"><strong>English</strong><span>Passed CET-4 and CET-6</span></div>
+            </div>
+        </section>
+
+        <section id="honors">
+            <div class="section-head">
+                <div><h2>Recognition</h2>
+                </div>
+            </div>
+            <div class="honors-grid">
+                <div class="honor">Comprehensive Scholarship <small>Second Class, 2024–2025 First Semester</small></div>
+                <div class="honor">Outstanding Student <small>2024–2025 Academic Year</small></div>
+                <div class="honor">MCM/ICM Honorable Mention <small>H Award</small></div>
+                <div class="honor">Outstanding Youth League Member <small>2023–2024 Academic Year</small></div>
+                <div class="honor">Advanced Individual in Labor Practice <small>2022–2023 Academic Year</small></div>
+                <div class="honor">National College Student Micro-movie Display <small>Third Prize, Long Video Group</small></div>
+            </div>
+        </section>
+
+        <section id="resume">
+            <div class="section-head">
+                <div><h2>Updated resume</h2>
+                </div>
+            </div>
+            <div class="resume-card">
+                <div class="resume-summary">
+                    <div>
+                        <h3 style="margin-top: 0;">Resume Summary</h3>
+                        <p><strong>Major:</strong> Electrical Engineering and Automation</p>
+                        <p><strong>Education:</strong> Chongqing University, expected graduation June 2027</p>
+                        <p><strong>Focus areas:</strong> Industrial control, power systems, simulation, robotics, and embedded practice</p>
+                    </div>
+                    <div class="cta-row">
+                        <a class="btn btn-primary" href="assets/Jingyi_Guo_Resume.pdf" download="Jingyi_Guo_Resume.pdf">Download PDF</a>
+                        <a class="btn btn-secondary" href="assets/Jingyi_Guo_Resume.pdf" target="_blank" rel="noopener">Open Resume</a>
+                    </div>
+                </div>
+                <div class="resume-frame" aria-label="Resume PDF preview">
+                    <object data="assets/Jingyi_Guo_Resume.pdf" type="application/pdf">
+                        <p style="padding: 20px;">Your browser may not show the PDF preview. Please use the buttons to download or open the resume.</p>
+                    </object>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-head">
+                <div><h2>Contact information</h2>
+                </div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item"><small>Email</small><a href="mailto:2738911257@qq.com">2738911257@qq.com</a></div>
+                <div class="contact-item"><small>Phone</small><a href="tel:+8613315056656">+86 133 1505 6656</a></div>
+                <div class="contact-item"><small>Location</small><strong>Hebei, China</strong></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Jingyi Guo.</p>
+    </footer>
+</body>
+</html>
